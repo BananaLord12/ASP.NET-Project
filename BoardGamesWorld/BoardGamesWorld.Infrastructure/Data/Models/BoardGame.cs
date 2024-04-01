@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using static BoardGamesWorld.Infrastructure.Constants.DataConstants;
@@ -41,5 +42,7 @@ namespace BoardGamesWorld.Infrastructure.Data.Models
 
         [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; } = null!;
+
+        public List<Event> Events { get; set; } = new List<Event>();
     }
 }

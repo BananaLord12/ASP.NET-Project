@@ -10,47 +10,53 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
 {
     internal class SeedData
     {
-        public IdentityUser AdminUser { get; set; }
-        public IdentityUser GuestUser { get; set; }
+        public IdentityUser AdminUser { get; set; } = new IdentityUser();
+        public IdentityUser GuestUser { get; set; } = new IdentityUser();
 
-        public Contributor Contributer { get; set; }
-        public Organizer Organizer { get; set; }
+        public Contributor Contributer { get; set; } = new Contributor();
+        public Organizer Organizer { get; set; } = new Organizer();
 
-        public Category Cooperative { get; set; }
-        public Category Legacy { get; set; }
-        public Category Card { get; set; }
-        public Category DeckBuilding { get; set; }
-        public Category RealTime { get; set; }
-        public Category StoryTelling { get; set; }
-        public Category Word { get; set; }
-        public Category WorkerPlacement { get; set; }
-        public Category Dice { get; set; }
-        public Category Trains { get; set; }
-        public Category Puzzle { get; set; }
-        public Category Adventure { get; set; }
+        public Category Cooperative { get; set; } = new Category();
+        public Category Legacy { get; set; } = new Category();
+        public Category Card { get; set; } = new Category();
+        public Category DeckBuilding { get; set; } = new Category();
+        public Category RealTime { get; set; } = new Category();
+        public Category StoryTelling { get; set; } = new Category();
+        public Category Word { get; set; } = new Category();
+        public Category WorkerPlacement { get; set; } = new Category();
+        public Category Dice { get; set; } = new Category();
+        public Category Trains { get; set; } = new Category();
+        public Category Puzzle { get; set; } = new Category();
+        public Category Adventure { get; set; } = new Category();
 
-        public Theme Campaign { get; set; }
-        public Theme Family { get; set; }
-        public Theme Animals { get; set; }
-        public Theme CityBuilding { get; set; }
-        public Theme Civilization { get; set; }
-        public Theme ClassicGames { get; set; }
-        public Theme Dungeon { get; set; }
-        public Theme Exploration { get; set; }
-        public Theme Horror { get; set; }
-        public Theme Magic { get; set; }
-        public Theme ScienceFiction { get; set; }
-        public Theme Trivia { get; set; }
+        public Theme Campaign { get; set; } = new Theme();
+        public Theme Family { get; set; } = new Theme();
+        public Theme Animals { get; set; } = new Theme();
+        public Theme CityBuilding { get; set; } = new Theme();
+        public Theme Civilization { get; set; } = new Theme();
+        public Theme ClassicGames { get; set; } = new Theme();
+        public Theme Dungeon { get; set; } = new Theme();
+        public Theme Exploration { get; set; } = new Theme();
+        public Theme Horror { get; set; } = new Theme();
+        public Theme Magic { get; set; } = new Theme();
+        public Theme ScienceFiction { get; set; } = new Theme();
+        public Theme Trivia { get; set; } = new Theme();
 
-        public BoardGame FirstBoardGame { get; set; }
-        public BoardGame SecondBoardGame { get; set; }
-        public BoardGame ThirdBoardGame { get; set; }
+        public BoardGame FirstBoardGame { get; set; } = new BoardGame();
+        public BoardGame SecondBoardGame { get; set; } = new BoardGame();
+        public BoardGame ThirdBoardGame { get; set; } = new BoardGame();
 
-        public Event Event { get; set; }
+        public Event Event { get; set; } = new Event();
 
         public SeedData()
         {
-
+            SeedUsers();
+            SeedContributor();
+            SeedOrganizer();
+            SeedCategories();
+            SeedTheme();
+            SeedBoardGames();
+            SeedEvent();
         }
 
         private void SeedUsers()

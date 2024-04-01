@@ -4,6 +4,7 @@ using BoardGamesWorld.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoardGamesWorld.Infrastructure.Migrations
 {
     [DbContext(typeof(BoardGamesWorldDBContext))]
-    partial class BoardGamesWorldDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240401152037_DomainTablesAdded")]
+    partial class DomainTablesAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,38 +69,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                     b.ToTable("BoardGames");
 
                     b.HasComment("Information For Board Game");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 5,
-                            Description = "Betrayal Legacy consists of a prologue and a thirteen-chapter story that takes place over decades.",
-                            ImageUrl = "https://cf.geekdo-images.com/F4-UGFUM3FfVLWsgBgpFLQ__imagepagezoom/img/O5jPYNofvdcR5rBeBbglWj3e7lc=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic4314964.jpg",
-                            Name = "Betrayal Legacy",
-                            Price = 150m,
-                            Quantity = 5
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 3,
-                            Description = "In Pandemic, several virulent diseases have broken out simultaneously all over the world!",
-                            ImageUrl = "https://cf.geekdo-images.com/S3ybV1LAp-8SnHIXLLjVqA__imagepagezoom/img/pD92VJE3Eq9meWfJ6g1pfssPhTA=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic1534148.jpg",
-                            Name = "Pandemic",
-                            Price = 60m,
-                            Quantity = 10
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 2,
-                            Description = "Experience the haunted and harrowing world of The Binding of Isaac: Four Souls yourself in this faithful adaptation.",
-                            ImageUrl = "https://cf.geekdo-images.com/a9XKKnuS1ejixeWRfcxQHQ__imagepagezoom/img/vyfJgyBuQz73NPqDeCMBn4cfAPY=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic8103837.png",
-                            Name = "The Binding of Isaac: FourSouls",
-                            Price = 200m,
-                            Quantity = 2
-                        });
                 });
 
             modelBuilder.Entity("BoardGamesWorld.Infrastructure.Data.Models.Category", b =>
@@ -121,68 +91,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                     b.ToTable("Categories");
 
                     b.HasComment("Board Game Category ");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2,
-                            Name = "Card"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Cooperative"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Deck Building"
-                        },
-                        new
-                        {
-                            Id = 1,
-                            Name = "Adventure"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Dice"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Legacy"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Puzzle"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Real Time"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Story Telling"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Train"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Word"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Worker Placement"
-                        });
                 });
 
             modelBuilder.Entity("BoardGamesWorld.Infrastructure.Data.Models.Event", b =>
@@ -247,21 +155,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                     b.ToTable("Events");
 
                     b.HasComment("Information for the Event");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BoardGameId = 3,
-                            Description = "Exploring Spooky Basement",
-                            End = new DateTime(2024, 4, 1, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Dungeon Crawling",
-                            OrganizerId = 1,
-                            OrganizerName = "Admin",
-                            RequiredParticipants = 4,
-                            Start = new DateTime(2024, 4, 1, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            ThemeId = 7
-                        });
                 });
 
             modelBuilder.Entity("BoardGamesWorld.Infrastructure.Data.Models.Organizer", b =>
@@ -297,15 +190,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                     b.ToTable("Organizers");
 
                     b.HasComment("Event Organizer");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Admin",
-                            PhoneNumber = "+35988888888",
-                            UserId = "a016f272-4daa-4d52-a797-ac11a94b48a3"
-                        });
                 });
 
             modelBuilder.Entity("BoardGamesWorld.Infrastructure.Data.Models.Theme", b =>
@@ -328,68 +212,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                     b.ToTable("Themes");
 
                     b.HasComment("Event Theme");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Animals"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Campaign"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "City Building"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Civilization"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Classic Games"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Dungeon"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Exploration"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Family"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Horror"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Magic"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Science Fiction"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Trivia"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -512,40 +334,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "a016f272-4daa-4d52-a797-ac11a94b48a3",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "572c3f6d-0368-452f-b33d-9ab2f158babe",
-                            Email = "admin@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "admin@gmail.com",
-                            NormalizedUserName = "admin@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPagSmRI6V7rNDAPj90FPUO8W/Fwco/qexGgFhF6RKXNDOIxAkIeqDl7WU1YOxHcuA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "b169c9a3-b662-4229-aaa5-a98dc86a7b00",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@gmail.com"
-                        },
-                        new
-                        {
-                            Id = "e2ef1ea5-0a5d-441c-b3cf-97330a3025ed",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0c26c3ce-9a12-4fd3-8252-38c6beca7a21",
-                            Email = "user@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "user@gmail.com",
-                            NormalizedUserName = "user@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBeSDUHCbCCdF0JJRqlC38j18rv2JBPe3nkv+0iQaHcA2gUg0AeDZfE3qz912AXq0w==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "50ebde87-a756-4c5b-95d7-04e471dfde2a",
-                            TwoFactorEnabled = false,
-                            UserName = "user@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -638,7 +426,7 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                     b.HasOne("BoardGamesWorld.Infrastructure.Data.Models.Category", "Category")
                         .WithMany("BoardGames")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -655,13 +443,13 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                     b.HasOne("BoardGamesWorld.Infrastructure.Data.Models.Organizer", "Organizer")
                         .WithMany("Events")
                         .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BoardGamesWorld.Infrastructure.Data.Models.Theme", "Theme")
                         .WithMany("Events")
                         .HasForeignKey("ThemeId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BoardGame");

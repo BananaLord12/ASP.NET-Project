@@ -5,51 +5,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BoardGamesWorld.Infrastructure.Migrations
 {
-    public partial class TableDomainAdded : Migration
+    public partial class DomainTablesAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "EventId",
-                table: "AspNetUsers",
-                type: "int",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Category Identifier")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false, comment: "Category Name")
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Category Name")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                 },
                 comment: "Board Game Category ");
-
-            migrationBuilder.CreateTable(
-                name: "Contributors",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false, comment: "Contributor Identifier")
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false, comment: "Contributor Name"),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false, comment: "Contributor's Phone Number"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "User Identifier")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Contributors", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Contributors_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                },
-                comment: "Website Contributor");
 
             migrationBuilder.CreateTable(
                 name: "Organizers",
@@ -93,13 +65,12 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Board Game Identifier")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false, comment: "Board Game Name"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Board Game Name"),
                     Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false, comment: "Board Game Description"),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Board Game Image URL"),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Board Game Price"),
                     Quantity = table.Column<int>(type: "int", nullable: false, comment: "Board Game Amount"),
-                    CategoryId = table.Column<int>(type: "int", nullable: false, comment: "Board Game Category Identifier"),
-                    ContributorId = table.Column<int>(type: "int", nullable: true)
+                    CategoryId = table.Column<int>(type: "int", nullable: false, comment: "Board Game Category Identifier")
                 },
                 constraints: table =>
                 {
@@ -109,12 +80,7 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_BoardGames_Contributors_ContributorId",
-                        column: x => x.ContributorId,
-                        principalTable: "Contributors",
-                        principalColumn: "Id");
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Information For Board Game");
 
@@ -142,41 +108,26 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                         column: x => x.BoardGameId,
                         principalTable: "BoardGames",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Events_Organizers_OrganizerId",
                         column: x => x.OrganizerId,
                         principalTable: "Organizers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Events_Themes_ThemeId",
                         column: x => x.ThemeId,
                         principalTable: "Themes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Information for the Event");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_EventId",
-                table: "AspNetUsers",
-                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BoardGames_CategoryId",
                 table: "BoardGames",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BoardGames_ContributorId",
-                table: "BoardGames",
-                column: "ContributorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Contributors_UserId",
-                table: "Contributors",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Events_BoardGameId",
@@ -197,13 +148,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                 name: "IX_Organizers_UserId",
                 table: "Organizers",
                 column: "UserId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUsers_Events_EventId",
-                table: "AspNetUsers",
-                column: "EventId",
-                principalTable: "Events",
-                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -226,9 +170,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Contributors");
 
             migrationBuilder.DropIndex(
                 name: "IX_AspNetUsers_EventId",

@@ -14,7 +14,7 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
         public void Configure(EntityTypeBuilder<BoardGame> builder)
         {
             builder
-                .HasOne(b => b.Category)
+                .HasOne(b=>b.Category)
                 .WithMany(c => c.BoardGames)
                 .HasForeignKey(b => b.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);

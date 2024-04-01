@@ -15,7 +15,7 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
         {
             var data = new SeedData();
 
-            builder.HasData(new Category[] { data.Card, data.Cooperative, data.DeckBuilding, data.Adventure, data.Dice, data.Puzzle, data.RealTime, data.StoryTelling, data.Trains, data.Word, data.WorkerPlacement });
+            builder.HasData(new Category[] { data.Card, data.Cooperative, data.DeckBuilding, data.Adventure, data.Dice, data.Legacy ,data.Puzzle, data.RealTime, data.StoryTelling, data.Trains, data.Word, data.WorkerPlacement });
         }
     }
 }

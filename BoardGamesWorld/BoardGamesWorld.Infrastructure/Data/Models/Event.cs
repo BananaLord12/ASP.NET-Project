@@ -32,7 +32,6 @@ namespace BoardGamesWorld.Infrastructure.Data.Models
         [Comment("Theme Identifier")]
         public int ThemeId { get; set; }
 
-        [Required]
         [ForeignKey(nameof(ThemeId))]
         public Theme Theme { get; set; } = null!;
 
@@ -40,7 +39,6 @@ namespace BoardGamesWorld.Infrastructure.Data.Models
         [Comment("Organizer Identifier")]
         public int OrganizerId { get; set; }
 
-        [Required]
         [ForeignKey(nameof(OrganizerId))]
         public Organizer Organizer { get; set; } = null!;
 
@@ -48,7 +46,6 @@ namespace BoardGamesWorld.Infrastructure.Data.Models
         [Comment("Board Game Identifier")]
         public int BoardGameId { get; set; }
 
-        [Required]
         [ForeignKey(nameof(BoardGameId))]
         public BoardGame BoardGame { get; set; } = null!;
 

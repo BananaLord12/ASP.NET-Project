@@ -20,11 +20,11 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
                 .HasForeignKey(e => e.OrganizerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .HasOne(e => e.BoardGame)
-                .WithMany(b => b.Events)
-                .HasForeignKey(e => e.BoardGameId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .HasOne(e => e.BoardGame)
+            //    .WithMany(b => b.Events)
+            //    .HasForeignKey(e => e.BoardGameId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             var data = new SeedData();
 

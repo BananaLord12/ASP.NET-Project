@@ -5,7 +5,7 @@ namespace BoardGamesWorld.Infrastructure.Data
 {
     public class BoardGamesWorldDBContext : IdentityDbContext
     {
-        protected BoardGamesWorldDBContext(DbContextOptions<BoardGamesWorldDBContext> options) :
+        public BoardGamesWorldDBContext(DbContextOptions<BoardGamesWorldDBContext> options) :
             base(options)
         {
         }

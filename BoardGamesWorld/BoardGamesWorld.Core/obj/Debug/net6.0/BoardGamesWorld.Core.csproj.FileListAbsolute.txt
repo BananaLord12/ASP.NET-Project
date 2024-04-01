@@ -1,0 +1,12 @@
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\bin\Debug\net6.0\BoardGamesWorld.Core.deps.json
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\bin\Debug\net6.0\BoardGamesWorld.Core.dll
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\bin\Debug\net6.0\BoardGamesWorld.Core.pdb
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\BoardGamesWorld.Core.csproj.AssemblyReference.cache
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\BoardGamesWorld.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\BoardGamesWorld.Core.AssemblyInfoInputs.cache
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\BoardGamesWorld.Core.AssemblyInfo.cs
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\BoardGamesWorld.Core.csproj.CoreCompileInputs.cache
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\BoardGamesWorld.Core.dll
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\refint\BoardGamesWorld.Core.dll
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\BoardGamesWorld.Core.pdb
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Core\obj\Debug\net6.0\ref\BoardGamesWorld.Core.dll

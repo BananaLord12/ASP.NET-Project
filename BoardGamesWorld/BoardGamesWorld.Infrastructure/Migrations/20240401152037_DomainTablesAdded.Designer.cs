@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BoardGamesWorld.Infrastructure.Migrations
 {
-    [DbContext(typeof(BoardGamesWorldDBContext))]
+    [DbContext(typeof(BoardGameWDbContext))]
     [Migration("20240401152037_DomainTablesAdded")]
     partial class DomainTablesAdded
     {

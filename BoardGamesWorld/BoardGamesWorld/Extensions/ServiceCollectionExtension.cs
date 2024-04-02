@@ -1,5 +1,4 @@
-﻿using BoardGamesWorld.Data;
-using BoardGamesWorld.Infrastructure.Data;
+﻿using BoardGamesWorld.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
 
             var connectionString = config.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            service.AddDbContext<BoardGamesWorldDBContext>(options =>
+            service.AddDbContext<BoardGameWDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
             service.AddDatabaseDeveloperPageExceptionFilter();
@@ -35,7 +34,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                 })
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<BoardGameWDbContext>();
             return service;
 
         }

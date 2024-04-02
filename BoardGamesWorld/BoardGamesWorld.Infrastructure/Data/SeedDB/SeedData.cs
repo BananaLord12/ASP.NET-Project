@@ -46,6 +46,8 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
 
         public Event Event { get; set; } = new Event();
 
+        public EventParticipant Participant { get; set; } = new EventParticipant();
+
         public SeedData()
         {
             SeedUsers();
@@ -54,6 +56,7 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
             SeedTheme();
             SeedBoardGames();
             SeedEvent();
+            SeedEventParticipants();
         }
 
         private void SeedUsers()
@@ -295,8 +298,16 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
                 BoardGameId = ThirdBoardGame.Id,
                 Start = DateTime.Parse("18:00 2024/04/01"),
                 End = DateTime.Parse("20:00 2024/04/01"),
-                RequiredParticipants = 4,
-                Participants = new List<IdentityUser>()
+                RequiredParticipants = 4
+            };
+        }
+
+        private void SeedEventParticipants()
+        {
+            Participant = new EventParticipant()
+            {
+                EventId = 1,
+                ParticipantId = GuestUser.Id
             };
         }
     }

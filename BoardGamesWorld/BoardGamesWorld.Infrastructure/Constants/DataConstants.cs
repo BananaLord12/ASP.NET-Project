@@ -10,7 +10,7 @@ namespace BoardGamesWorld.Infrastructure.Constants
     {
         //Board Game
 
-        public const int BoardGameNameMaxLength = 30;
+        public const int BoardGameNameMaxLength = 100;
         public const int BoardGameNameMinLength = 5;
 
         public const int BoardGamesDescMaxLength = 300;
@@ -40,7 +40,7 @@ namespace BoardGamesWorld.Infrastructure.Constants
 
         //Category
 
-        public const int CategoryNameMaxLength = 12;
+        public const int CategoryNameMaxLength = 50;
         public const int CategoryNameMinLength = 3;
 
         //Theme

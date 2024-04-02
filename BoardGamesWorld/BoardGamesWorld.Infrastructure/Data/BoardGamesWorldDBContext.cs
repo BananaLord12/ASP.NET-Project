@@ -14,7 +14,6 @@ namespace BoardGamesWorld.Infrastructure.Data
 
         public DbSet<BoardGame> BoardGames { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
-        public DbSet<Contributor> Contributors { get; set; } = null!;
         public DbSet<Event> Events { get; set; } = null!;
         public DbSet<Organizer> Organizers { get; set; } = null!;
         public DbSet<Theme> Themes { get; set; } = null!;
@@ -22,7 +21,6 @@ namespace BoardGamesWorld.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new UserConfiguration());
-            builder.ApplyConfiguration(new ContributorConfiguration());
             builder.ApplyConfiguration(new OrganizerConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new ThemeConfiguration());

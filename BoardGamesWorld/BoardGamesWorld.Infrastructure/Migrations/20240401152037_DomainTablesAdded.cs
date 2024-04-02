@@ -152,9 +152,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUsers_Events_EventId",
-                table: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Events");
@@ -170,14 +167,6 @@ namespace BoardGamesWorld.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropIndex(
-                name: "IX_AspNetUsers_EventId",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "EventId",
-                table: "AspNetUsers");
         }
     }
 }

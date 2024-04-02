@@ -60,7 +60,8 @@ namespace BoardGamesWorld.Infrastructure.Data.Models
         [Required]
         [Comment("Participants Required")]
         public int RequiredParticipants { get; set; }
-        [Required]
-        public List<IdentityUser> Participants { get; set; } = new List<IdentityUser>();
+
+        public IList<EventParticipant> Participants { get; set; } = new List<EventParticipant>();
+
     }
 }

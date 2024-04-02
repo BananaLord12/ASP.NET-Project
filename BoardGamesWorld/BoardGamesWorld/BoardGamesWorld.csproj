@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-BoardGamesWorld-40e2b41a-c700-4c6e-882c-438c2e204bf4</UserSecretsId>
+    <UserSecretsId>aspnet-BoardGamesWorld-2b92f361-f2a8-46a4-85f7-e141df3488fb</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

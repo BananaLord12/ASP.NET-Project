@@ -1,9 +1,11 @@
 ﻿using BoardGamesWorld.Core.Costants;
+using BoardGamesWorld.Core.Models.BoardGame;
 using BoardGamesWorld.Core.Models.Home;
 using BoardGamesWorld.Core.Services.BoardGames;
 using BoardGamesWorld.Infrastructure.Data.Common;
 using BoardGamesWorld.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace BoardGamesWorld.Core.Services
 {
@@ -11,9 +13,11 @@ namespace BoardGamesWorld.Core.Services
     {
         private readonly IRepository repository;
 
-        public BoardGamesService(IRepository _repository)
+        private readonly ILogger logger;
+        public BoardGamesService(IRepository _repository, ILogger<BoardGamesService> _logger)
         {
             repository = _repository;
+            logger = _logger;
         }
 
         public async Task<BGQueryServiceModel> All(string? category = null,
@@ -106,14 +110,73 @@ namespace BoardGamesWorld.Core.Services
                     Name = b.Name,
                     Description = b.Description,
                     Price = b.Price,
-                    Category = b.Category.Name
+                    Category = b.Category.Name,
+                    Quantity= b.Quantity
                 }).FirstAsync();
+        }
+
+        public async Task<bool> CategoryExists(int categoryId)
+        {
+            return await repository.AllReadOnly<Category>()
+                .AnyAsync(c => c.Id == categoryId);
+        }
+
+        public async Task<int> Create(BGModel model)
+        {
+            var boardGame = new BoardGame() 
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Description = model.Description,
+                ImageUrl = model.ImageUrl,
+                Price = model.Price,
+                Quantity = model.Quantity,
+                CategoryId = model.CategoryId,
+            };
+
+            try
+            {
+                await repository.AddAsync(boardGame);
+                await repository.SaveChangedAsync();
+            }catch (Exception ex)
+            {
+                logger.LogError(nameof(Create), ex);
+                throw new ApplicationException("Database failed to save info", ex);
+            }
+
+            return boardGame.Id;
+        }
+
+        public async Task Delete(int bgId)
+        {
+            var boardGame = await repository.GetByIdAsync<BoardGame>(bgId);
+
+            await repository.SaveChangedAsync();
+        }
+
+        public async Task Edit(int bgId, BGModel model)
+        {
+            var boardGame = await repository.GetByIdAsync<BoardGame>(bgId);
+
+            boardGame.Name = model.Name;
+            boardGame.Description = model.Description;
+            boardGame.ImageUrl = model.ImageUrl;
+            boardGame.Price = model.Price;
+            boardGame.Quantity = model.Quantity;
+            boardGame.CategoryId = model.CategoryId;
+
+            await repository.SaveChangedAsync();
         }
 
         public async Task<bool> Exists(int id)
         {
             return await repository.AllReadOnly<BoardGame>()
                 .AnyAsync(b => b.Id== id);
+        }
+
+        public async Task<int> GetHouseCategoryId(int bgId)
+        {
+            return (await repository.GetByIdAsync<BoardGame>(bgId)).CategoryId;
         }
 
         public async Task<IEnumerable<BoardGameModel>> LastThreeBoardGamesAsync()

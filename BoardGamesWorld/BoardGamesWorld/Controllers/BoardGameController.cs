@@ -80,5 +80,60 @@ namespace BoardGamesWorld.Controllers
 
             return RedirectToAction(nameof(Details), new { id = id });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if((await boardGameService.Exists(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            var bg = await boardGameService.BoardGameDetailsById(id);
+            var categoryId = await boardGameService.GetHouseCategoryId(id);
+
+            var model = new BGModel()
+            {
+                Id = id,
+                Name = bg.Name,
+                Description = bg.Description,
+                ImageUrl = bg.ImageUrl,
+                Price = bg.Price,
+                Quantity = bg.Quantity,
+                CategoryId = categoryId,
+                BoardGameCategories = await boardGameService.AllCategories()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, BGModel model)
+        {
+            if(id != model.Id)
+            {
+                return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
+            }
+
+            if((await boardGameService.Exists(model.Id)) == false)
+            {
+                ModelState.AddModelError("", "Board Game does not exist");
+                model.BoardGameCategories = await boardGameService.AllCategories();
+
+                return View(model);
+            }
+
+            if ((await boardGameService.CategoryExists(model.CategoryId)) == false)
+            {
+                ModelState.AddModelError("", "Category does not exist");
+                model.BoardGameCategories = await boardGameService.AllCategories();
+
+                return View(model);
+            }
+
+            await boardGameService.Edit(model.Id, model);
+
+            return RedirectToAction(nameof(Details), new { id = model.Id });
+        }
     }
 }

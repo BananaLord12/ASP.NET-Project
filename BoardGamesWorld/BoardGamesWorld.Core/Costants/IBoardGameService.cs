@@ -1,4 +1,5 @@
-﻿using BoardGamesWorld.Core.Models.Home;
+﻿using BoardGamesWorld.Core.Models.BoardGame;
+using BoardGamesWorld.Core.Models.Home;
 using BoardGamesWorld.Core.Services.BoardGames;
 using System;
 using System.Collections.Generic;
@@ -28,5 +29,15 @@ namespace BoardGamesWorld.Core.Costants
         Task<BoardGamesDetailsServiceModel> BoardGameDetailsById(int id);
 
         Task<bool> Exists(int id);
+
+        Task<bool> CategoryExists(int categoryId);
+
+        Task<int> Create(BGModel model);
+
+        Task Edit(int bgId, BGModel model);
+
+        Task Delete(int bgId);
+
+        Task<int> GetHouseCategoryId(int bgId);
     }
 }

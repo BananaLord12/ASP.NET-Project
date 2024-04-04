@@ -1,4 +1,7 @@
-﻿using BoardGamesWorld.Infrastructure.Data;
+﻿using BoardGamesWorld.Core.Costants;
+using BoardGamesWorld.Core.Services;
+using BoardGamesWorld.Infrastructure.Data;
+using BoardGamesWorld.Infrastructure.Data.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,9 +10,11 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class ServiceCollectionExtension
     {
 
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection service)
         {
-            return services;
+            service.AddScoped<IBoardGameService, BoardGamesService>();
+
+            return service;
         }
 
         public static IServiceCollection AddApplicationDBContext(this IServiceCollection service, IConfiguration config)
@@ -18,6 +23,8 @@ namespace Microsoft.Extensions.DependencyInjection
             var connectionString = config.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             service.AddDbContext<BoardGameWDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            service.AddScoped<IRepository, Repository>();
 
             service.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -1,27 +1,34 @@
-﻿using BoardGamesWorld.Models;
+﻿using BoardGamesWorld.Core.Costants;
+using BoardGamesWorld.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace BoardGamesWorld.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IBoardGameService boardGameService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            ILogger<HomeController> logger,
+            IBoardGameService _boardGameService)
         {
             _logger = logger;
+            boardGameService= _boardGameService;
         }
 
-        public IActionResult Index()
+        [AllowAnonymous]
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var model = await boardGameService.LastThreeBoardGamesAsync();
+
+            return View(model);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        [AllowAnonymous]
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

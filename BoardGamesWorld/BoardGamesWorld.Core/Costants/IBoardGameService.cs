@@ -1,4 +1,5 @@
 ﻿using BoardGamesWorld.Core.Models.Home;
+using BoardGamesWorld.Core.Services.BoardGames;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,23 @@ namespace BoardGamesWorld.Core.Costants
 {
     public interface IBoardGameService
     {
-        Task<IEnumerable<BoardGamesIndexServiceModel>> LastThreeBoardGamesAsync();
+        Task<IEnumerable<BoardGameModel>> LastThreeBoardGamesAsync();
 
         Task<IEnumerable<BoardGamesAllServiceModel>> AllBoardGamesAsync();
 
+        Task<BGQueryServiceModel> All(
+            string? category = null,
+            string? searchTerm = null,
+            BoardGameSorting sorting = BoardGameSorting.Newest,
+            int currentPage = 1,
+            int housesPerPage = 1);
 
+        Task<IEnumerable<BoardGameCategoryModel>> AllCategories();
+
+        Task<IEnumerable<string>> AllCategoriesNames();
+
+        Task<BoardGamesDetailsServiceModel> BoardGameDetailsById(int id);
+
+        Task<bool> Exists(int id);
     }
 }

@@ -1,0 +1,22 @@
+﻿@model BoardGameServiceModel
+<div class="col-md-4">
+    <div class="card mb-3"> 
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Board Game Image">
+        <div class="card-body text-center">
+            <h4>@Model.Name</h4>
+            <h6> Price: 
+                <b>@String.Format("{0:f2}", Model.Price) BGN</b>
+            </h6> 
+            <br /> 
+            <a asp-controller="BoardGame" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-success">Details</a>
+            @if (User?.Identity?.Name == "admin@gmail.com")
+            { 
+                <a asp-controller="BoardGame" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                <a asp-controller="BoardGame" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                <p></p>
+@*                    <form asp-controller="House" asp-action="Leave" asp-route-id="@Model.Id" method="post">
+                        <input class="btn btn-primary" type="submit" value="Leave" /> </form> *@
+            }
+        </div> 
+    </div>
+</div>

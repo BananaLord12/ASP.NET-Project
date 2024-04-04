@@ -5,7 +5,17 @@
     @if (this.User?.Identity?.IsAuthenticated ?? false)
     {
          <li class="nav-item">
-             <a class="nav-link text-dark" asp-area="" asp-controller="BoardGame" asp-action="Mine">All Events</a>
+             <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Index">All Events</a>
          </li>
+         <li class="nav-item">
+             <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Add">Add an Event</a>
+         </li>
+
+        if (User?.Identity?.Name == "admin@gmail.com")
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Modify" asp-action="Add">Add Board Game</a>
+            </li>
+        }
     }
 </ul>

@@ -2,7 +2,7 @@
 
 namespace BoardGamesWorld.Controllers
 {
-    public class ModifyController : BaseController
+    public class OrganizerController : BaseController
     {
         public IActionResult Index()
         {

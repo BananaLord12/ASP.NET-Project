@@ -135,5 +135,36 @@ namespace BoardGamesWorld.Controllers
 
             return RedirectToAction(nameof(Details), new { id = model.Id });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if((await boardGameService.Exists(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            var boardGame = await boardGameService.BoardGameDetailsById(id);
+            var model = new BGDetailsViewModel()
+            {
+                Name= boardGame.Name,
+                ImageUrl= boardGame.ImageUrl,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, BGDetailsViewModel model)
+        {
+            if ((await boardGameService.Exists(id)) == false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            await boardGameService.Delete(id);
+
+            return RedirectToAction(nameof(All));
+        }
     }
 }

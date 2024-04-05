@@ -151,7 +151,6 @@ namespace BoardGamesWorld.Core.Services
         {
             var boardGame = await repository.GetByIdAsync<BoardGame>(bgId);
 
-            await repository.Delete(boardGame);
             await repository.SaveChangedAsync();
         }
 

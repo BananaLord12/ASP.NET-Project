@@ -13,6 +13,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationServices(this IServiceCollection service)
         {
             service.AddScoped<IBoardGameService, BoardGamesService>();
+            service.AddScoped<IOrganizerService, OrganizerService>();
+            service.AddScoped<IEvent, EventService>();
 
             return service;
         }

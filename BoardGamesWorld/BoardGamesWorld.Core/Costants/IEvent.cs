@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoardGamesWorld.Core.Models.Event;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace BoardGamesWorld.Core.Costants
 {
     public interface IEvent
     {
+        Task<IEnumerable<EventAllViewModel>> AllEventsAsync();
     }
 }

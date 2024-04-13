@@ -10,3 +10,15 @@ C:\Users\Atanas\source\repos\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\
 C:\Users\Atanas\source\repos\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\refint\BoardGamesWorld.Infrastructure.dll
 C:\Users\Atanas\source\repos\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\BoardGamesWorld.Infrastructure.pdb
 C:\Users\Atanas\source\repos\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\ref\BoardGamesWorld.Infrastructure.dll
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\BoardGamesWorld.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\BoardGamesWorld.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\BoardGamesWorld.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\BoardGamesWorld.Infrastructure.AssemblyInfo.cs
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\BoardGamesWorld.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\BoardGamesWorld.Infrastructure.dll
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\refint\BoardGamesWorld.Infrastructure.dll
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\BoardGamesWorld.Infrastructure.pdb
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\bin\Debug\net6.0\BoardGamesWorld.Infrastructure.deps.json
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\bin\Debug\net6.0\BoardGamesWorld.Infrastructure.dll
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\bin\Debug\net6.0\BoardGamesWorld.Infrastructure.pdb
+C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld.Infrastructure\obj\Debug\net6.0\ref\BoardGamesWorld.Infrastructure.dll

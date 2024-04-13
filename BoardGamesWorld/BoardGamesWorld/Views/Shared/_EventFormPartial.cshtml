@@ -4,7 +4,56 @@
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <form method="post">
             <input type="hidden" asp-for="@Model.Id" />
-
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Title..." />
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" rows="2" class="form-control" placeholder="Amazing Event Desc here..." />
+                <span asp-validation-for="Description" class="small text-dange"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThemeId"></label>
+                <select asp-for="ThemeId" class="form-control">
+                    @foreach(var theme in Model.ThemeCategories)
+                    {
+                        <option value="@theme.Id">@theme.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="ThemeId" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrganizerName"></label>
+                <input asp-for="OrganizerName" class="form-control" placeholder="easter egg :)" />
+                <span asp-validation-for="OrganizerName" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoardGameId"></label>
+                <select asp-for="BoardGameId" class="form-control">
+                    @foreach (var bg in Model.ThemeBoardGames)
+                    {
+                        <option value="@bg.Id">@bg.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="BoardGameId" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start"></label>
+                <input asp-for="Start" class="form-control" placeholder="Start of event..." />
+                <span asp-validation-for="Start" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="End"></label>
+                <input asp-for="End" class="form-control" placeholder="End of event..." />
+                <span asp-validation-for="End" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequiredParticipants"></label>
+                <input asp-for="RequiredParticipants" class="form-control" placeholder="Required Participants" />
+                <span asp-validation-for="RequiredParticipants" class="small text-danger"></span>
+            </div>
             <div class="text-center">
                 <input class="btn btn-primary mt-3" type="submit" value="Save" />
             </div>

@@ -18,11 +18,13 @@ namespace BoardGamesWorld.Core.Models.BoardGame
         public int Id { get; set; }
 
         [Required]
-        [StringLength(BoardGameNameMaxLength, MinimumLength = BoardGameNameMinLength)]
+        [StringLength(BoardGameNameMaxLength,
+            MinimumLength = BoardGameNameMinLength)]
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        [StringLength(BoardGamesDescMaxLength,MinimumLength = BoardGmaesDescMinLength)]
+        [StringLength(BoardGamesDescMaxLength,
+            MinimumLength = BoardGmaesDescMinLength)]
         public string Description { get; set; } = string.Empty;
 
         [Required]

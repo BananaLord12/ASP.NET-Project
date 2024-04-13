@@ -10,5 +10,19 @@ namespace BoardGamesWorld.Core.Costants
     public interface IEvent
     {
         Task<IEnumerable<EventAllViewModel>> AllEventsAsync();
+
+        Task<IEnumerable<ThemeCategoryModel>> AllThemeCategoriesAsync();
+
+        Task<IEnumerable<ThemeBoardGamesModel>> AllBoardGamesNamesAsync();
+
+        Task<EventModel> EventDetailsByIdAsync(int id);
+
+        Task<bool> ExistsAsync(int id);
+
+        Task<bool> ThemeExistsAsync(int themeId);
+
+        Task<bool> BoardGameNameExists(int bgId);
+
+        Task<int> CreateAsync(EModel model);
     }
 }

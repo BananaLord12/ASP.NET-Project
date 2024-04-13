@@ -20,6 +20,17 @@ namespace BoardGamesWorld.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            if((await eventService.ExistsAsync(id))== false) 
+            {
+                return RedirectToAction(nameof(All));
+            }
+            var model = await eventService.EventDetailsByIdAsync(id);
+
+            return View(model);
+        }
+
         public string GetUserId()
         {
             return User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? string.Empty;

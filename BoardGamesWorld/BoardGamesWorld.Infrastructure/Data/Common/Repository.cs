@@ -55,21 +55,12 @@ namespace BoardGamesWorld.Infrastructure.Data.Common
 
         public async Task DeleteAsync<T>(object id) where T : class
         {
-            T entity = await GetByIdAsync<T>(id);
+            T? entity = await GetByIdAsync<T>(id);
 
-            Delete<T>(entity);
-        }
-
-        public void Delete<T>(T entity) where T : class
-        {
-            EntityEntry entry = this.context.Entry(entity);
-
-            if(entry.State == EntityState.Detached)
+            if(entity != null)
             {
-                this.DbSet<T>().Attach(entity);
+                DbSet<T>().Remove(entity);
             }
-
-            entry.State = EntityState.Deleted;
         }
 
         public void Detach<T>(T entity) where T : class

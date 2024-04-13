@@ -23,6 +23,20 @@ namespace BoardGamesWorld.Core.Services
             repository = _repository;
             logger = _logger;
         }
+
+        public async Task<IEnumerable<ThemeBoardGamesModel>> AllBoardGamesNamesAsync()
+        {
+            return await repository
+                .AllReadOnly<BoardGame>()
+                .OrderBy(b => b.Name)
+                .Select(b => new ThemeBoardGamesModel()
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                })
+                .ToListAsync();
+        }
+
         public async Task<IEnumerable<EventAllViewModel>> AllEventsAsync()
         {
             return await repository
@@ -41,6 +55,107 @@ namespace BoardGamesWorld.Core.Services
                     End = e.End.ToString(),
                     RequiredParticipants = e.RequiredParticipants,
                 }).ToListAsync();
+        }
+
+        public async Task<IEnumerable<ThemeCategoryModel>> AllThemeCategoriesAsync()
+        {
+            return await repository
+                .AllReadOnly<Theme>()
+                .OrderBy(t => t.Name)
+                .Select(t => new ThemeCategoryModel()
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                })
+                .ToListAsync();
+        }
+
+        public async Task<bool> BoardGameNameExistsAsync(int bgId)
+        {
+            return await repository.AllReadOnly<BoardGame>()
+                    .AnyAsync(bg => bg.Id == bgId);
+        }
+
+        public async Task<int> CreateAsync(EModel model)
+        {
+            var ev = new Event()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Description = model.Description,
+                OrganizerName = model.OrganizerName,
+                ThemeId = model.ThemeId,
+                OrganizerId = GetOrganiserIdByUserName(model.OrganizerName).Result,
+                BoardGameId = model.BoardGameId,
+                Start = model.Start,
+                End = model.End,
+                RequiredParticipants = model.RequiredParticipants,
+            };
+
+            try
+            {
+                await repository.AddAsync(ev);
+                await repository.SaveChangedAsync();
+            }catch(Exception ex)
+            {
+                logger.LogError(nameof(CreateAsync), ex);
+                throw new ApplicationException("Database failed to save info", ex);
+            }
+
+            return ev.Id;
+        }
+
+        public Task Edit(int evId, EModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<EventModel> EventDetailsByIdAsync(int id)
+        {
+            return await repository.AllReadOnly<Event>()
+                .Where(e => e.Id == id)
+                .Select(e => new EventModel()
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Description = e.Description,
+                    OrganizerName = e.OrganizerName,
+                    OrganizerId = e.Organizer.UserId,
+                    ThemeId = e.Theme.Id,
+                    BoardGameId = e.BoardGame.Id,
+                    Start = e.Start,
+                    End = e.End,
+                    RequiredParticipants = e.RequiredParticipants,
+
+                }).FirstAsync();
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await repository.AllReadOnly<Event>()
+                .AnyAsync(e => e.Id == id);
+        }
+
+        public async Task<int> GetOrganiserIdByUserName(string name)
+        {
+            return await repository.AllReadOnly<Organizer>()
+                .Where(o => o.Name == name)
+                .Select(o => o.Id)
+                .FirstAsync();
+        }
+
+        public async Task<string> GetUserNameById(string id)
+        {
+            return await repository.AllReadOnly<Organizer>()
+                .Where(o => o.UserId == id)
+                .Select(o => o.Name)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> ThemeExistsAsync(int themeId)
+        {
+            return await repository.AllReadOnly<Theme>()
+                .AnyAsync(t => t.Id == themeId);
         }
     }
 }

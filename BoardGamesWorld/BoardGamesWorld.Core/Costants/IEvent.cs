@@ -21,8 +21,14 @@ namespace BoardGamesWorld.Core.Costants
 
         Task<bool> ThemeExistsAsync(int themeId);
 
-        Task<bool> BoardGameNameExists(int bgId);
+        Task<bool> BoardGameNameExistsAsync(int bgId);
 
         Task<int> CreateAsync(EModel model);
+
+        Task<string> GetUserNameById(string id);
+
+        Task<int> GetOrganiserIdByUserName(string name);
+
+        Task Edit(int evId, EModel model);
     }
 }

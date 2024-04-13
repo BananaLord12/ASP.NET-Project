@@ -40,8 +40,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9hcmRHYW1lXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Views/Event/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Views/Event/All.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcQWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Views/Event/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Views/Home/Index.cshtml]

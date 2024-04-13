@@ -25,6 +25,7 @@ namespace BoardGamesWorld.Core.Models.Event
         [Display(Name = "Theme")]
         public int ThemeId { get; set; }
         [Display(Name = "Board Game Name")]
+        public int OrganizerId { get; set; }
         public int BoardGameId { get; set; }
         [Required]
         [Display(Name = DateFormat)]
@@ -35,5 +36,8 @@ namespace BoardGamesWorld.Core.Models.Event
         [Required]
         [Display(Name = "Required Participants")]
         public int RequiredParticipants { get; set; }
+
+        public IEnumerable<ThemeCategoryModel> ThemeCategories { get; set; } = new List<ThemeCategoryModel>();
+        public IEnumerable<ThemeBoardGamesModel> ThemeBoardGames { get; set; } = new List<ThemeBoardGamesModel>();
     }
 }

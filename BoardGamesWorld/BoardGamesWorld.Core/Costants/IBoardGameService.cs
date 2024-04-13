@@ -36,7 +36,7 @@ namespace BoardGamesWorld.Core.Costants
 
         Task Edit(int bgId, BGModel model);
 
-        Task Delete(int bgId);
+        Task DeleteAsync(int bgid);
 
         Task<int> GetHouseCategoryId(int bgId);
     }

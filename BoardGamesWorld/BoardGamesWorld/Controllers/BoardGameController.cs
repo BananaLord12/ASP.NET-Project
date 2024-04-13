@@ -4,6 +4,7 @@ using BoardGamesWorld.Core.Models.Home;
 using BoardGamesWorld.Models;
 using Microsoft.AspNetCore.Authorization;
 using BoardGamesWorld.Core.Models.BoardGame;
+using BoardGamesWorld.Infrastructure.Data.Models;
 
 namespace BoardGamesWorld.Controllers
 {
@@ -147,22 +148,22 @@ namespace BoardGamesWorld.Controllers
             var boardGame = await boardGameService.BoardGameDetailsById(id);
             var model = new BGDetailsViewModel()
             {
-                Name= boardGame.Name,
-                ImageUrl= boardGame.ImageUrl,
+                Name = boardGame.Name,
+                ImageUrl = boardGame.ImageUrl,
             };
 
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int id, BGDetailsViewModel model)
+        public async Task<IActionResult> Delete(int id, BGModel model)
         {
             if ((await boardGameService.Exists(id)) == false)
             {
                 return RedirectToAction(nameof(All));
             }
 
-            await boardGameService.Delete(id);
+            await boardGameService.DeleteAsync(model.Id);
 
             return RedirectToAction(nameof(All));
         }

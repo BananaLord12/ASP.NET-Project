@@ -15,6 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection
             service.AddScoped<IBoardGameService, BoardGamesService>();
             service.AddScoped<IOrganizerService, OrganizerService>();
             service.AddScoped<IEvent, EventService>();
+            service.AddScoped<IEventParticipants, EventParticipantsService>();
 
             return service;
         }

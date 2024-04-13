@@ -85,7 +85,7 @@ namespace BoardGamesWorld.Core.Services
                 Description = model.Description,
                 OrganizerName = model.OrganizerName,
                 ThemeId = model.ThemeId,
-                OrganizerId = GetOrganiserIdByUserName(model.OrganizerName).Result,
+                OrganizerId = GetOrganiserIdByUserNameAsync(model.OrganizerName).Result,
                 BoardGameId = model.BoardGameId,
                 Start = model.Start,
                 End = model.End,
@@ -105,9 +105,20 @@ namespace BoardGamesWorld.Core.Services
             return ev.Id;
         }
 
-        public Task Edit(int evId, EModel model)
+        public async Task EditAsync(int evId, EModel model)
         {
-            throw new NotImplementedException();
+            var ev = await repository.GetByIdAsync<Event>(evId);
+
+            ev.Name = model.Name;
+            ev.Description = model.Description;
+            ev.OrganizerName = model.OrganizerName;
+            ev.ThemeId = model.ThemeId;
+            ev.BoardGameId = model.BoardGameId;
+            ev.Start = model.Start;
+            ev.End = model.End;
+            ev.RequiredParticipants= model.RequiredParticipants;
+
+            await repository.SaveChangedAsync();
         }
 
         public async Task<EventModel> EventDetailsByIdAsync(int id)
@@ -136,7 +147,17 @@ namespace BoardGamesWorld.Core.Services
                 .AnyAsync(e => e.Id == id);
         }
 
-        public async Task<int> GetOrganiserIdByUserName(string name)
+        public async Task<int> GetEventBoardGameIdAsync(int evId)
+        {
+            return (await repository.GetByIdAsync<Event>(evId)).BoardGameId;
+        }
+
+        public async Task<int> GetEventThemeIdAsync(int evId)
+        {
+            return (await repository.GetByIdAsync<Event>(evId)).ThemeId;
+        }
+
+        public async Task<int> GetOrganiserIdByUserNameAsync(string name)
         {
             return await repository.AllReadOnly<Organizer>()
                 .Where(o => o.Name == name)

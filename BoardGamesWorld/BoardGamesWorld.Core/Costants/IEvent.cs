@@ -27,8 +27,12 @@ namespace BoardGamesWorld.Core.Costants
 
         Task<string> GetUserNameById(string id);
 
-        Task<int> GetOrganiserIdByUserName(string name);
+        Task<int> GetOrganiserIdByUserNameAsync(string name);
 
-        Task Edit(int evId, EModel model);
+        Task EditAsync(int evId, EModel model);
+
+        Task<int> GetEventThemeIdAsync(int evId);
+
+        Task<int> GetEventBoardGameIdAsync(int evId);
     }
 }

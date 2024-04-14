@@ -105,6 +105,20 @@ namespace BoardGamesWorld.Core.Services
             return ev.Id;
         }
 
+        public async Task DeleteAsync(int evId)
+        {
+            try
+            {
+                await repository.DeleteAsync<Event>(evId);
+                await repository.SaveChangedAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(nameof(DeleteAsync), ex);
+                throw new ApplicationException("Database failed to save info", ex);
+            }
+        }
+
         public async Task EditAsync(int evId, EModel model)
         {
             var ev = await repository.GetByIdAsync<Event>(evId);

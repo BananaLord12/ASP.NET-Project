@@ -1,7 +1,9 @@
 ﻿using BoardGamesWorld.Attribute;
 using BoardGamesWorld.Core.Costants;
 using BoardGamesWorld.Core.Models.Event;
+using BoardGamesWorld.Core.Models.EventParticipant;
 using BoardGamesWorld.Core.Services;
+using BoardGamesWorld.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -10,10 +12,12 @@ namespace BoardGamesWorld.Controllers
     public class EventController : BaseController
     {
         private readonly IEvent eventService;
+        private readonly IEventParticipants epService;
 
-        public EventController(IEvent _eventService)
+        public EventController(IEvent _eventService, IEventParticipants _epService)
         {
             eventService = _eventService;
+            epService= _epService;
         }
 
         public async Task<IActionResult> All()
@@ -88,7 +92,7 @@ namespace BoardGamesWorld.Controllers
 
             var model = new EModel()
             {
-                Id = id,
+                Id = ev.Id,
                 Name = ev.Name,
                 Description = ev.Description,
                 OrganizerName = ev.OrganizerName,
@@ -142,6 +146,104 @@ namespace BoardGamesWorld.Controllers
             await eventService.EditAsync(model.Id, model);
 
             return RedirectToAction(nameof(Details), new { id = model.Id });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Join(int id)
+        {
+            string userId = GetUserId();
+
+            if((await epService.IsUserAlreadyInTheSameOneAsync(userId, id)) == true)
+            {
+                ModelState.AddModelError("", "User cannot join the same event");
+                return RedirectToAction(nameof(All));
+            }
+
+            var model = new EventParticipantModel()
+            {
+                EventId = id,
+                ParticipantId = userId
+            };
+
+            await epService.JoinAsync(model);
+
+            return RedirectToAction(nameof(Joined));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Joined()
+        {
+            string userid = GetUserId();
+
+            var model = await epService.AllEventsForUser(userid);
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if((await eventService.ExistsAsync(id)) == false) 
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            var ev = await eventService.EventDetailsByIdAsync(id);
+
+            var model = new EventRemovalModel()
+            {
+                Name = ev.Name,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, EventRemovalModel model)
+        {
+            if ((await eventService.ExistsAsync(id))== false)
+            {
+                return RedirectToAction(nameof(All));
+            }
+
+            var participants = epService.AllParticipantsInEvent(id).Result;
+
+            foreach(var participant in participants)
+            {
+                var ep = new EventParticipant()
+                {
+                    EventId = participant.EventId,
+                    ParticipantId = participant.Id,
+                };
+
+                await epService.LeaveAsync(ep);
+            }
+
+            await eventService.DeleteAsync(id);
+
+            return RedirectToAction(nameof(All));
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Leave(int id)
+        {
+            if(await eventService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            var ep = new EventParticipant()
+            {
+                EventId = id,
+                ParticipantId = GetUserId()
+            };
+
+            //var participant = epService.FirstParticipantInEvent(id, GetUserId());
+
+            await epService.LeaveAsync(ep);
+
+            return RedirectToAction(nameof(Joined));
         }
 
         public string GetUserId()

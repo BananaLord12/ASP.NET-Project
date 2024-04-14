@@ -43,7 +43,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     options.Password.RequireDigit= false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
-                })
+                }).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<BoardGameWDbContext>();
             return service;
 

@@ -535,15 +535,15 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                         {
                             Id = "a016f272-4daa-4d52-a797-ac11a94b48a3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f46aee8b-98f6-436a-9de9-fa4bb754a00f",
+                            ConcurrencyStamp = "7b7e24c9-4abd-4629-849c-8a407a63eba8",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@gmail.com",
                             NormalizedUserName = "admin@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOrrOg/kZf/q4QsZjl8bbZK64XHqlY8HaFNo5zJ+uFF4mRsyyvO2F21o1jh3vrIj1Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIFsg5qh1TbtEl8vM5GqcTWn9bVMFeLi3iQjoCiCPBm2mmlIZr0rSjW/HmCdYGLJgg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2df11ff7-75e5-4ccb-b414-36a021635404",
+                            SecurityStamp = "02e50e85-c374-4574-a539-9e9c8276be8f",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         },
@@ -551,15 +551,15 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                         {
                             Id = "e2ef1ea5-0a5d-441c-b3cf-97330a3025ed",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "11e54952-5aee-488b-8249-bb0ad2647b50",
+                            ConcurrencyStamp = "b4553247-7ee9-4811-9e2f-d0afb446df48",
                             Email = "user@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "user@gmail.com",
                             NormalizedUserName = "user@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDqaTgsnG0LMKgY1u1JbMTS7I5lurQmLvmvUWiEQ9hwVE7sRt65tgQPi++GNy9/qHw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELIqCzkMSguLTk3hKB3kt0Id6R6Xz8J/KviFvVMWBfNNqlo+wWBcaB86i49D+hrCJQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "99ca2f44-39d7-482a-97e2-428b54b55c83",
+                            SecurityStamp = "9dff484c-c7e8-4fce-b9f0-50ad5531c920",
                             TwoFactorEnabled = false,
                             UserName = "user@gmail.com"
                         });
@@ -588,6 +588,22 @@ namespace BoardGamesWorld.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserClaims", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            ClaimType = "user:fullname",
+                            ClaimValue = "Guest Guestov",
+                            UserId = "e2ef1ea5-0a5d-441c-b3cf-97330a3025ed"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            ClaimType = "user:fullname",
+                            ClaimValue = "Great Admin",
+                            UserId = "a016f272-4daa-4d52-a797-ac11a94b48a3"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>

@@ -22,6 +22,9 @@ namespace BoardGamesWorld.Infrastructure.Data.Common
 
         Task DeleteAsync<T>(object id) where T : class;
 
+        Task DeleteRangeAsync<T>(object[] id) where T : class;
         void Detach<T>(T entity) where T : class;
+
+        Task DeleteEntity<T>(object[] id) where T : class;
     }
 }

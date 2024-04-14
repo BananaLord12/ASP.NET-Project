@@ -147,11 +147,18 @@ namespace BoardGamesWorld.Core.Services
             return boardGame.Id;
         }
 
-        public async Task Delete(int bgId)
+        public async Task DeleteAsync(int bgId)
         {
-            var boardGame = await repository.GetByIdAsync<BoardGame>(bgId);
-
-            await repository.SaveChangedAsync();
+            try
+            {
+                await repository.DeleteAsync<BoardGame>(bgId);
+                await repository.SaveChangedAsync();
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(nameof(DeleteAsync), ex);
+                throw new ApplicationException("Database failed to save info", ex);
+            }    
         }
 
         public async Task Edit(int bgId, BGModel model)

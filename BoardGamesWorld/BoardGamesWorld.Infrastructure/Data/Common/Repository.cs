@@ -69,5 +69,25 @@ namespace BoardGamesWorld.Infrastructure.Data.Common
 
             entry.State = EntityState.Detached;
         }
+
+        public async Task DeleteRangeAsync<T>(object[] id) where T : class
+        {
+            T? entities = await GetByIdsAsync<T>(id);
+
+            if(entities != null)
+            {
+                DbSet<T>().RemoveRange(entities);
+            }
+        }
+
+        public async Task DeleteEntity<T>(object[] id) where T : class
+        {
+            T? entity = await DbSet<T>().FindAsync(id);
+            if(entity != null)
+            {
+                DbSet<T>().Remove(entity);
+            }
+
+        }
     }
 }

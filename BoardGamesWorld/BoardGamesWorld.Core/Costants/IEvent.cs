@@ -34,5 +34,7 @@ namespace BoardGamesWorld.Core.Costants
         Task<int> GetEventThemeIdAsync(int evId);
 
         Task<int> GetEventBoardGameIdAsync(int evId);
+
+        Task DeleteAsync(int evId);
     }
 }

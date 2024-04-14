@@ -1,0 +1,14 @@
+﻿@model IEnumerable<EventAllViewModel>
+@{
+    ViewBag.Title = "My Events";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var e in Model)
+    {
+            <partial name="_EventJoinedPartial" model="@e" />
+    }
+</div>

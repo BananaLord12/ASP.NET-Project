@@ -48,5 +48,15 @@ namespace BoardGamesWorld.Infrastructure.Constants
         public const int ThemeNameMaxLength = 20;
         public const int ThemeNameMinLength = 5;
 
+        //Application User
+        //First name
+
+        public const int UserFirstNameMaxLength = 12;
+        public const int UserFirstNameMinLength = 1;
+
+        //Second Name
+
+        public const int UserLastNameMaxLength = 15;
+        public const int UserLastNameMinLength = 3;
     }
 }

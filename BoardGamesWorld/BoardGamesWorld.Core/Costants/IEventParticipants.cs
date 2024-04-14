@@ -22,5 +22,12 @@ namespace BoardGamesWorld.Core.Costants
         Task<bool> IsUserAlreadyInTheSameOneAsync(string userid, int id);
 
         Task<int> JoinAsync(EventParticipantModel model);
+
+        Task<IEnumerable<EParticipant>> AllParticipantsInEvent(int evid);
+
+        Task DeleteRangeAsync(IEnumerable<EParticipant> participants);
+        Task<EParticipant> FirstParticipantInEvent(int evid, string userid);
+
+        Task LeaveAsync(EventParticipant evid);
     }
 }

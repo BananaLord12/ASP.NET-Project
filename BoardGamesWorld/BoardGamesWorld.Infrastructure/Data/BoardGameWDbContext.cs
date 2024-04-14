@@ -1,5 +1,6 @@
 ﻿using BoardGamesWorld.Infrastructure.Data.Models;
 using BoardGamesWorld.Infrastructure.Data.SeedDB;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,10 @@ namespace BoardGamesWorld.Infrastructure.Data
             : base(options)
         {
         }
+
+        private IdentityUser AdminUser { get; set; }
+
+        private Organizer AdminOrganizer { get; set; }
 
         public DbSet<BoardGame> BoardGames { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;

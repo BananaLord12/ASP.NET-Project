@@ -1,5 +1,6 @@
 ﻿using BoardGamesWorld.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Identity;
+using static BoardGamesWorld.Infrastructure.Constants.CustomClaims;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
     internal class SeedData
     {
         public IdentityUser AdminUser { get; set; } = new IdentityUser();
+
         public IdentityUser GuestUser { get; set; } = new IdentityUser();
         public Organizer Organizer { get; set; } = new Organizer();
 
@@ -69,7 +71,7 @@ namespace BoardGamesWorld.Infrastructure.Data.SeedDB
                 UserName = "admin@gmail.com",
                 NormalizedUserName = "admin@gmail.com",
                 Email = "admin@gmail.com",
-                NormalizedEmail = "admin@gmail.com"
+                NormalizedEmail = "admin@gmail.com",
             };
 
             AdminUser.PasswordHash = hasher.HashPassword

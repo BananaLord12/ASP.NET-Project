@@ -1,4 +1,5 @@
 ﻿using BoardGamesWorld.Core.Costants;
+using BoardGamesWorld.Core.Models.Admin;
 using BoardGamesWorld.Core.Models.Event;
 using BoardGamesWorld.Infrastructure.Data.Common;
 using BoardGamesWorld.Infrastructure.Data.Models;
@@ -164,6 +165,25 @@ namespace BoardGamesWorld.Core.Services
         public async Task<int> GetEventBoardGameIdAsync(int evId)
         {
             return (await repository.GetByIdAsync<Event>(evId)).BoardGameId;
+        }
+
+        public async Task<IEnumerable<EventAllViewModel>> GetEventsByOrganizerId(int organizerId)
+        {
+            return await repository.AllReadOnly<Event>()
+                .Where(e => e.OrganizerId == organizerId)
+                .Select(e => new EventAllViewModel()
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Description = e.Description,
+                    OrganizerName = e.OrganizerName,
+                    ThemeId = e.ThemeId,
+                    OrganizerId = e.Organizer.UserId,
+                    BoardGameId = e.BoardGameId,
+                    Start = e.Start.ToString(),
+                    End = e.End.ToString(),
+                    RequiredParticipants = e.RequiredParticipants
+                }).ToListAsync();
         }
 
         public async Task<int> GetEventThemeIdAsync(int evId)

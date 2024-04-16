@@ -1,4 +1,5 @@
-﻿using BoardGamesWorld.Core.Models.Event;
+﻿using BoardGamesWorld.Core.Models.Admin;
+using BoardGamesWorld.Core.Models.Event;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,5 +37,7 @@ namespace BoardGamesWorld.Core.Costants
         Task<int> GetEventBoardGameIdAsync(int evId);
 
         Task DeleteAsync(int evId);
+
+        Task<IEnumerable<EventAllViewModel>> GetEventsByOrganizerId(int organizerId);
     }
 }

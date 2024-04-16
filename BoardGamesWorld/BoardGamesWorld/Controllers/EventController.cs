@@ -13,11 +13,13 @@ namespace BoardGamesWorld.Controllers
     {
         private readonly IEvent eventService;
         private readonly IEventParticipants epService;
+        private readonly IOrganizerService organizerService;
 
-        public EventController(IEvent _eventService, IEventParticipants _epService)
+        public EventController(IEvent _eventService, IEventParticipants _epService, IOrganizerService _organizerService)
         {
             eventService = _eventService;
             epService= _epService;
+            organizerService = _organizerService;
         }
 
         public async Task<IActionResult> All()
@@ -174,6 +176,11 @@ namespace BoardGamesWorld.Controllers
         public async Task<IActionResult> Joined()
         {
             string userid = GetUserId();
+
+            if (User.isAdmin())
+            {
+                return RedirectToAction("Mine", "Event", new { area = "Admin" });
+            }
 
             var model = await epService.AllEventsForUser(userid);
 

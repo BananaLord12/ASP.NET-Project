@@ -16,6 +16,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/Event/Mine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRcTWluZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/Home/DashBoard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxEYXNoQm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

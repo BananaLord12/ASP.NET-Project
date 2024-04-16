@@ -13,15 +13,15 @@
             <p class="mb-0"><span class="fw-bold">Ending Time: </span>@Model.End</p>
             <p class="mb-0"><span class="fw-bold">Required Players: </span>@Model.RequiredParticipants</p>
         </div>
-        <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Details</a>
-        @if(User?.Id() == Model.OrganizerId)
+        <a asp-area="" asp-controller="Event" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Details</a>
+        @if(User?.Id() == Model.OrganizerId || User.isAdmin())
         {
-            <a asp-controller="Event" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Edit</a>
-            <a asp-controller="Event" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Delete</a>
+            <a asp-area="" asp-controller="Event" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Edit</a>
+            <a asp-area="" asp-controller="Event" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Delete</a>
         }
         else
         {
-            <form class="input-group-sm" asp-controller="Event" asp-action="Join" asp-route-id="@Model.Id">
+            <form class="input-group-sm" asp-controller="Event" asp-area="" asp-action="Join" asp-route-id="@Model.Id">
                 <input type="submit" value="Subscribe" class="fs-6 btn btn-warning mb-2 w-100 p-3 fw-bold" />
             </form>
         }

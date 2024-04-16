@@ -3,6 +3,7 @@ using BoardGamesWorld.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using static BoardGamesWorld.Core.Contacts.AdministratorConstants;
 
 namespace BoardGamesWorld.Controllers
 {
@@ -19,10 +20,14 @@ namespace BoardGamesWorld.Controllers
             boardGameService= _boardGameService;
         }
 
-        [AllowAnonymous]
-
         public async Task<IActionResult> Index()
         {
+
+            if (User.IsInRole(AdminRole))
+            {
+                return RedirectToAction("DashBoard", "Home", new { area = "Admin" });
+            }
+
             var model = await boardGameService.LastThreeBoardGamesAsync();
 
             return View(model);

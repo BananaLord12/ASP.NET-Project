@@ -16,12 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Atanas\Documents\GitHub\ASP.NET-Project\BoardGamesWorld\BoardGamesWorld
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/Event/Joined.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRcSm9pbmVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/Event/Mine.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRcTWluZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/Home/DashBoard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxEYXNoQm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/User/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/_ViewImports.cshtml]
@@ -131,6 +139,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-v8h2s6i06l
 
 [C:/Users/Atanas/Documents/GitHub/ASP.NET-Project/BoardGamesWorld/BoardGamesWorld/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

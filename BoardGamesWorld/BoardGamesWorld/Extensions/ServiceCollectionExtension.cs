@@ -16,6 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
             service.AddScoped<IOrganizerService, OrganizerService>();
             service.AddScoped<IEvent, EventService>();
             service.AddScoped<IEventParticipants, EventParticipantsService>();
+            service.AddScoped<IUserService, UserService>();
 
             return service;
         }

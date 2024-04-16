@@ -10,11 +10,13 @@ namespace BoardGamesWorld.Areas.Admin.Controllers
     {
         private readonly IEvent _eventService;
         private readonly IOrganizerService _organizerService;
+        private readonly IEventParticipants epService;
 
-        public EventController(IEvent eventService, IOrganizerService organizerService)
+        public EventController(IEvent eventService, IOrganizerService organizerService, IEventParticipants _epService)
         {
             _eventService = eventService;
             _organizerService = organizerService;
+            epService = _epService;
         }
 
         public async Task<IActionResult> Mine()
@@ -30,6 +32,19 @@ namespace BoardGamesWorld.Areas.Admin.Controllers
 
 
             return View(myEvents);
+        }
+
+        public async Task<IActionResult> Joined()
+        {
+
+            var userId = User.Id();
+
+            var joinedEvents = new JoinedEventsViewModel()
+            {
+                JoinedEvents = await epService.AllEventsForUser(userId)
+            };
+
+            return View(joinedEvents);
         }
     }
 }

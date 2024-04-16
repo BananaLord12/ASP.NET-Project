@@ -15,5 +15,7 @@ namespace BoardGamesWorld.Core.Costants
         Task CreateAsync(string userId, string name, string phoneNumber);
 
         Task<int?> GetOrganizerIdAsync(string userId);
+
+        Task<string> GetPhoneNumberFromUserId(string userId);
     }
 }

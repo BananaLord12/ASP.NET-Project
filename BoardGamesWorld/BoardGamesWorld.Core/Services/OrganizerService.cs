@@ -44,6 +44,12 @@ namespace BoardGamesWorld.Core.Services
                 .FirstOrDefaultAsync(o => o.UserId== userId))?.Id;
         }
 
+        public async Task<string> GetPhoneNumberFromUserId(string userId)
+        {
+            return (await repo.AllReadOnly<Organizer>()
+                .FirstOrDefaultAsync(o => o.UserId == userId)).PhoneNumber;
+        }
+
         public async Task<bool> UserWithPhoneNumberExistsAsync(string phoneNumber)
         {
             return await repo.AllReadOnly<Organizer>()

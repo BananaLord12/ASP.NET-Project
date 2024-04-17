@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BoardGamesWorld.Infrastructure.Data.Models;
+using System.Runtime.CompilerServices;
 
 namespace BoardGamesWorld.Core.Services
 {
@@ -25,10 +27,15 @@ namespace BoardGamesWorld.Core.Services
 
         public async Task<IEnumerable<UserServiceModel>> AllAsync()
         {
+            var result = new List<UserServiceModel>();
+
             return await repository.AllReadOnly<IdentityUser>()
+                .OrderBy(u => u.Email)
                 .Select(u => new UserServiceModel()
                 {
-                    Email = u.Email
+                    Email = u.Email,
+                    PhoneNumber = organizerService.GetPhoneNumberFromUserId(u.Id).Result,
+                    IsOrganizer = organizerService.ExistsByIdAsync(u.Id).Result         
                 }).ToListAsync();
         }
 

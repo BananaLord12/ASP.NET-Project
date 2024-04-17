@@ -8,9 +8,21 @@ namespace BoardGamesWorld.Infrastructure.Data
 {
     public class BoardGameWDbContext : IdentityDbContext
     {
-        public BoardGameWDbContext(DbContextOptions<BoardGameWDbContext> options)
-            : base(options)
+        private bool seedDb;
+        //, bool seed = true
+        public BoardGameWDbContext(DbContextOptions<BoardGameWDbContext> 
+            options) : base(options)
         {
+            //if (Database.IsRelational())
+            //{
+            //    Database.Migrate();
+            //}
+            //else
+            //{
+            //    Database.EnsureCreated();
+            //}
+
+            //seedDb = seed;
         }
 
         private IdentityUser AdminUser { get; set; }
@@ -27,14 +39,16 @@ namespace BoardGamesWorld.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new OrganizerConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
-            builder.ApplyConfiguration(new ThemeConfiguration());
-            builder.ApplyConfiguration(new BoardGameConfiguration());
-            builder.ApplyConfiguration(new EventConfiguration());
-            builder.ApplyConfiguration(new EventParticipantsConfiguration());
-
+            //if (seedDb)
+            //{
+                builder.ApplyConfiguration(new UserConfiguration());
+                builder.ApplyConfiguration(new ThemeConfiguration());
+                builder.ApplyConfiguration(new BoardGameConfiguration());
+                builder.ApplyConfiguration(new EventConfiguration());
+                builder.ApplyConfiguration(new EventParticipantsConfiguration());
+            //}
             base.OnModelCreating(builder);
         }
     }

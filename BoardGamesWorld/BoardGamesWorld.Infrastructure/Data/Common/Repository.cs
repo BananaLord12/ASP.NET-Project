@@ -89,5 +89,10 @@ namespace BoardGamesWorld.Infrastructure.Data.Common
             }
 
         }
+
+        public async Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class
+        {
+            await DbSet<T>().AddRangeAsync(entities);
+        }
     }
 }

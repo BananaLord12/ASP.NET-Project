@@ -56,8 +56,7 @@ namespace BoardGamesWorld.Core.Services
                 .Select(ep => new EParticipant()
                 {
                     Id = ep.ParticipantId,
-                    EventId = ep.EventId
-                    
+                    EventId = ep.EventId                
                 })
                 .ToListAsync();
         }

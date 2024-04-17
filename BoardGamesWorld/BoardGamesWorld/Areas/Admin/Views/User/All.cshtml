@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<UserServiceModel>
 @{ 
-    ViewBag.Title = "All Users";
+    ViewBag.Title = "All Organizers";
 } 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr /> 
@@ -14,8 +14,8 @@
                 <label>Phone Number</label>
             </th>
             <th>
-                <label>User Is Organizer</label>
-            </th> 
+                <label>User is Organizer</label>
+            </th>
         </tr>
     </thead>
             <tbody>
@@ -28,17 +28,15 @@
                         <td>
                             <label>@user.PhoneNumber</label>
                         </td>
-                        <td>
-                            @if (user.PhoneNumber != string.Empty) 
-                            { 
-                                <label>✔</label> 
-                            } 
-                            else 
-                            { 
-                                <label class="text-center">❌</label>
-                            } 
-                        </td>
-                    </tr>
+                        <td> @if (user.IsOrganizer == true)
+                        {
+                            <label>✔</label>
+                        }
+                        else
+                        {
+                            <label class="text-center">❌</label>
+                        } </td>
+                        </tr>
                 }
             </tbody>
 </table>

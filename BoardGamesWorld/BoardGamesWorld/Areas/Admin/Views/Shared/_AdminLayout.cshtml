@@ -1,18 +1,14 @@
-﻿﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Board Games World - Administrator</title>
+    <title>@ViewData["Title"] - Board Games World</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/HouseRentingSystem.styles.css" asp-append-version="true" />
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/BoardGamesWorld.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <partial name="_UserMessages" />
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -23,29 +19,53 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="House" asp-action="All">All Houses</a>
+                        <li class="nav-item dropdown">
+                            <div>
+                                <a class="btn dropdown-toggle" href="#" role="button"
+                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                All
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item nav-link text-dark" asp-area=""
+                                    asp-controller="BoardGame" asp-action="All">All Board Games</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link text-dark" asp-area=""
+                                       asp-controller="Event" asp-action="All">All Events</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="Admin"
+                                       asp-controller="User" asp-action="All">All Users</a>
+                                </li>
+                            </ul>
+                            </div>
                         </li>
-                        @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="House" asp-action="Mine">My Houses</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="House" asp-action="Add">Add House</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Agent" asp-action="Become">Become Agent</a>
-                            </li>
-                        }
+                            <li class="nav-item dropdown">
+                            <div>
+                                <a class="btn dropdown-toggle" href="#" role="button"
+                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                New item
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item nav-link text-dark" asp-area=""
+                                    asp-controller="BoardGame" asp-action="Add">Add Board Game</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link text-dark" asp-area=""
+                                       asp-controller="Event" asp-action="Add">Add Event</a>
+                                </li>
+                            </ul>
+                            </div>
+                        </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial"/>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        <h1>Administaration area</h1>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -53,12 +73,11 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @DateTime.UtcNow.Year - Board Games World
+            &copy; @DateTime.Today.Year - Board Games World
         </div>
     </footer>
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/toastr/toastr.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

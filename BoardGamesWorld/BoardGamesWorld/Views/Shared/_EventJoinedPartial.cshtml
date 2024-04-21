@@ -1,0 +1,23 @@
+﻿@using System.Security.Claims;
+@model EventAllViewModel
+
+<div class="text-center row">
+    <div class="card col-4" style="width: 30rem; ">
+        <div class="card-body">
+            <h4 class="mb-0"><span class="fw-bold">Event Name: </span>@Model.Name</h4>
+            <p class="mb-0">@Model.Description</p>
+            <h6 class="card-title mt-1">@Model.Theme</h6>
+            <h5 class="card-title mt-1"><span class="fw-bold">By: </span>@Model.OrganizerName</h5>
+            <h5 class="card-title mt-1">@Model.BoardGame</h5>
+            <p class="mb-0"><span class="fw-bold">Starting Time: </span>@Model.Start</p>
+            <p class="mb-0"><span class="fw-bold">Ending Time: </span>@Model.End</p>
+            <p class="mb-0"><span class="fw-bold">Required Players: </span>@Model.RequiredParticipants</p>
+        </div>
+        <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Details</a>
+
+        <form class="input-group-sm" asp-controller="Event" asp-action="Leave" asp-route-id="@Model.Id">
+            <input type="submit" value="Unsubscribe" class="fs-6 btn btn-warning mb-2 w-100 p-3 fw-bold" />
+        </form>
+        
+    </div>
+</div>

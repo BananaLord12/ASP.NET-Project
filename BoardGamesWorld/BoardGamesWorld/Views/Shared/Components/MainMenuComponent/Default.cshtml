@@ -1,0 +1,27 @@
+﻿<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="BoardGame" asp-action="All">All Board Games</a>
+    </li>
+    @if (this.User?.Identity?.IsAuthenticated ?? false)
+    {
+         <li class="nav-item">
+             <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="All">All Events</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Add">Add an Event</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Joined">My Events</a>
+         </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Organizer" asp-action="Become">Become an Organizer</a>
+        </li>
+
+        if (User?.Identity?.Name == "admin@gmail.com")
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="BoardGame" asp-action="Add">Add Board Game</a>
+            </li>
+        }
+    }
+</ul>
